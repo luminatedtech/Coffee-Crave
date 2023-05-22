@@ -1,12 +1,11 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from "react";
+import { Switch, Route } from "react-router-dom";
 
 function App() {
+  const [user, setUser] = useState(null);
+
   return (
-    <div className="App">
-      <header className="App-header">
-      </header>
-    </div>
+    <Login onLogin = {setUser} /> 
   );
 }
 
