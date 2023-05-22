@@ -61,7 +61,7 @@ function SignUpForm( { onLogin }){
             value={profileUrl}
             onChange={(e)=> setProfileUrl(e.target.value)}
             />
-            <button type="submit">{isLoading ? "Loading...": "Sign Up"} </button>
+            <button type="submit">{isLoading ? "Loading..": "Sign Up"} </button>
 
         </form>
     )
