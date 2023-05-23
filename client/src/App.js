@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import Login from "./Login";
 import ShopList from "./ShopList";
+import NavBar from "./NavBar"; 
+import { BrowserRouter,Switch, Route } from "react-router-dom"
+import Shop from "./Shop";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -14,7 +17,18 @@ function App() {
   }, [])
   if (!user) return <Login onLogin={setUser} />
   return (
-    <ShopList /> 
+    
+    <div>
+      <NavBar user={user} setUser={setUser}/>
+      <BrowserRouter>
+      <Switch>
+        <Route path="/">
+          <ShopList/>
+        </Route>
+      </Switch>
+      </BrowserRouter>
+      
+    </div>
   );
 }
 

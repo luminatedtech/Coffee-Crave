@@ -1,5 +1,5 @@
 import React from "react"
-import { Link } from "react-router-dom"
+import { NavLink,BrowserRouter } from "react-router-dom"
 
 function NavBar ({ user, setUser }) {
 	function handleLogoutClick() {
@@ -9,6 +9,19 @@ function NavBar ({ user, setUser }) {
 			}
 		})
 	}
+	return(
+	<header>
+		<BrowserRouter>
+		<NavLink to ="/"> Coffee Crave</NavLink>
+		<nav>
+			<button onClick={handleLogoutClick}>
+				Logout
+			</button>
+		</nav>
+		</BrowserRouter>
+		
+	</header>
+	)
 }
 
 export default NavBar 
