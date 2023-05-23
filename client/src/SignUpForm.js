@@ -35,6 +35,7 @@ function SignUpForm( { onLogin }){
     return (
         <form onSubmit={handleSubmit}>
             <input
+            placeholder="Username"
             type="text"
             id="username"
             value={username}
@@ -42,6 +43,7 @@ function SignUpForm( { onLogin }){
             />
             <br/>
             <input
+            placeholder="Enter Password"
             type="password"
             id="password"
             value={password}
@@ -49,6 +51,7 @@ function SignUpForm( { onLogin }){
             />
             <br/>
             <input
+            placeholder="Confirm Password"
             type="password"
             id="password_confirmation"
             value={passwordConfirmation}
@@ -56,6 +59,7 @@ function SignUpForm( { onLogin }){
             />
             <br/>
             <input
+            placeholder="Profile URL"
             type="text"
             id="profileUrl"
             value={profileUrl}
