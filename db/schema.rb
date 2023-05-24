@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2023_05_13_202235) do
 
-  create_table "review", force: :cascade do |t|
+  create_table "reviews", force: :cascade do |t|
     t.integer "user_id"
     t.integer "shop_id"
     t.string "comment"
