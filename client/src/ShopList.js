@@ -10,7 +10,7 @@ useEffect(() => {
 }, [])
 return (
     <div id="shopList"> {shops.map((shop)=>(
-        <Shop key={shop.id} name={shop.name} image_url={shop.image_url} shop={shop} address={shop.address} />
+        <Shop key={shop.id} name={shop.name} image_url={shop.image_url} reviews={shop.reviews} address={shop.address} />
     ))}
     </div>
 )
