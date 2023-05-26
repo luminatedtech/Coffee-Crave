@@ -1,5 +1,5 @@
 import React from "react"
-import { NavLink,BrowserRouter } from "react-router-dom"
+import { Link,BrowserRouter } from "react-router-dom"
 
 function NavBar ({ user, setUser }) {
 	function handleLogoutClick() {
@@ -12,7 +12,8 @@ function NavBar ({ user, setUser }) {
 	return(
 	<header>
 		<BrowserRouter>
-		<NavLink to ="/"> Coffee Crave</NavLink>
+		<Link to ="/"> Coffee Crave</Link>
+		
 		<nav>
 			<button onClick={handleLogoutClick}>
 				Logout

@@ -1,9 +1,11 @@
 import React from "react"
-function Review ({stars,comment,name}) {
+function Review ({stars,comment,title,name}) {
+    
 return (
     <div> 
-        <h1> {name} wrote {comment} </h1>
-        <h2> This gets {stars} stars! </h2>
+        <h1> {title} </h1>
+        <h4>  wrote {comment} </h4> 
+        <h4> This gets {stars} stars! </h4>
     </div>
 )
 }
