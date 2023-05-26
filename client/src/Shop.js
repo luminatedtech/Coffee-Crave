@@ -2,16 +2,16 @@ import React, {useState} from "react";
 import {Link,BrowserRouter} from "react-router-dom"
 import Review from "./Review";
 import ReviewForm from "./ReviewForm";
-function Shop ({id,name,address,image_url,reviews}) {
+function Shop ({id,name,address,image_url,reviews,index}) {
 const [showReviews, setShowReviews] = useState(false)
     return (
-        <div id="shop">
-            <div>
-                <h2>{name}</h2>
+        <div className="shop">
+            <img src={image_url}/> 
+            <div className="shopInfo">
+                <h1>{`${index + 1}. ${name}`}</h1>
+                <p>{address}</p>
             </div>
             
-            <div> Address: {address} </div>
-            <div><img src={image_url}/> </div>
             <Link to= {`/newReview/${id}`}>
                 Click me for new review
             </Link>
