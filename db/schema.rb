@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 2023_05_13_202235) do
     t.string "name"
     t.string "image_url"
     t.string "address"
+    t.string "phone_number"
   end
 
   create_table "users", force: :cascade do |t|

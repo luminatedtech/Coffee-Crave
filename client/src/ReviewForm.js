@@ -27,7 +27,7 @@ function ReviewForm () {
         navigate('/')
     }
     return (
-        <section>
+        <section className="reviewForm">
             <h2> Create Review </h2>
             <form onSubmit={handleSubmit}>
                 <div>

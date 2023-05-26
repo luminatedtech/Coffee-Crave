@@ -4,6 +4,7 @@ class Shops < ActiveRecord::Migration[6.1]
       t.string :name
       t.string :image_url
       t.string :address
+      t.string :phone_number
      end 
   end
 end

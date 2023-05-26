@@ -59,3 +59,12 @@ img {
   justify-content: start;
   border-color: #ebebeb;
 }
+
+.reviewForm {
+  display: flex;
+  border-color: #ebebeb;
+  position: fixed;
+  margin-top: 100px;
+  
+  
+}

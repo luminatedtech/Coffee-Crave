@@ -12,7 +12,7 @@ function NavBar ({ user, setUser }) {
 	return(
 	<header>
 		<BrowserRouter>
-		<Link to ="/"> Coffee Crave</Link>
+		<Link to ="/" > Coffee Crave</Link>
 		
 		<nav>
 			<button onClick={handleLogoutClick}>
