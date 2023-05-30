@@ -15,7 +15,7 @@ class ReviewsController < ApplicationController
     def index
         user = User.find_by(id: session[:user_id])
         if user
-            reviews = user.reviews
+            reviews = Review.all
             render json: reviews, include: :user
         else 
             render json: {errors: ["Not authorized"]}, status: :unauthorized
