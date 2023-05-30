@@ -18,6 +18,7 @@ return (
         <h4>  wrote {comment} </h4> 
         <h4> This gets {stars} stars! </h4>
         <button onClick={onDeleteReview}> Delete Review </button>
+        <button>Edit</button>
     </div>
 )
 }
