@@ -1,5 +1,6 @@
-import React from "react"
+import React, {useState} from "react"
 function Review ({stars,comment,title,id}) {
+    const [showEdit, setShowEdit] = useState(false)
     function onDeleteReview () {
         fetch(`reviews/${id}`,{
             method: "DELETE"
