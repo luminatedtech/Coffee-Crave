@@ -38,7 +38,7 @@ class ReviewsController < ApplicationController
             review.update(review_params)
             render json: review
         else 
-            render json: {error: "Review not found"}
+            render json: {error: "Not the right User"}
         end
     end 
 private
