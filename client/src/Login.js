@@ -4,30 +4,37 @@ import { useState } from 'react';
 function Login({ onLogin }) {
 const [showLogin, setShowLogin] = useState(true)
 return (
-    <section>
-    <h1> CoffeeCrave </h1>
-    {showLogin ? (
+    <div className="loginDiv">
+        <section>
+            <div className="logoDiv">
+            <h1 className="logo"> CoffeeCrave </h1>
+            <img className="coffeeLogo" src="coffeelogo.jpg"/>
+            </div>
+        
+        {showLogin ? (
         <>
         <LoginForm onLogin={onLogin}/>
-        <p>
+        <p className="text">
             Don't have an account?
-            <button color="secondary" onClick={()=> setShowLogin(false)}>
+            <button className="button" color="secondary" onClick={()=> setShowLogin(false)}>
             Sign Up
             </button>
         </p>
         </>
-    ) : (
+        ) : (
         <>
         <SignUpForm onLogin={onLogin}/>
         <p>
         Already have an account?
-        <button onClick={()=> setShowLogin(true)}>
+        <button className="b" onClick={()=> setShowLogin(true)}>
         Log in
         </button>
         </p>
         </>
     )}
-    </section>
+        </section>
+    </div>
+    
 )
 
 }

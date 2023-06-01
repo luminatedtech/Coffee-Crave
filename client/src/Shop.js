@@ -1,7 +1,6 @@
-import React, {useState} from "react";
-import {Link,BrowserRouter} from "react-router-dom"
-import Review from "./Review";
-import ReviewForm from "./ReviewForm";
+import React from "react";
+import {Link} from "react-router-dom"
+
 function Shop ({id,name,address,image_url,reviews,index}) {
 
     return (
@@ -9,14 +8,14 @@ function Shop ({id,name,address,image_url,reviews,index}) {
             <img src={image_url}/> 
             <div className="shopInfo">
                 <h1>{`${index + 1}. ${name}`}</h1>
-                <p>{address}</p>
+                <p>Address: {address}</p>
             </div>
             
-            <Link to= {`/newReview/${id}`}>
+            <Link className ="link" to= {`/newReview/${id}`}>
                 Click me for new review
             </Link >
             
-            <Link to= {`/reviewList/${id}`}> 
+            <Link className ="link" to= {`/reviewList/${id}`}> 
                  View Reviews 
             </Link>
         </div>

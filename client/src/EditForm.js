@@ -48,7 +48,7 @@ function EditForm ({id}) {
                     />
                 </div>
                 <div>
-                    <button type="submit">
+                    <button className="button" type="submit">
                         Finish
                     </button>
                 </div>

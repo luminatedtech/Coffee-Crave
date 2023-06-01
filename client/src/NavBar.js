@@ -15,7 +15,7 @@ function NavBar ({ user, setUser }) {
 		<Link to ="/" > Coffee Crave</Link>
 		
 		<nav>
-			<button onClick={handleLogoutClick}>
+			<button className="button" onClick={handleLogoutClick}>
 				Logout
 			</button>
 		</nav>

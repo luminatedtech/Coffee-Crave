@@ -68,3 +68,38 @@ img {
   
   
 }
+.loginDiv {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.formContainer{
+  margin-top: 100px;
+}
+.formContainer input {
+  display: block;
+  width: 100%;
+  padding: 0.5rem 0.8rem 0.5rem 0.8rem;
+  border: 0;
+  border-radius: 5px;
+} 
+.logo {
+  text-align: center;
+  margin-top: 100px;
+}
+.logoDiv{
+  display: flex;
+}
+.coffeeLogo{
+  margin-top:40px;
+}
+.button {
+  display: block;
+  width: 100%;
+  padding: 0.5rem 0.8rem 0.5rem 0.8rem;
+  border: 0;
+  border-radius: 5px;
+}
+.text {
+  text-align: center;
+}

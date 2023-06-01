@@ -19,10 +19,10 @@ return (
         <h1> {title} </h1>
         <h4>  wrote {comment} </h4> 
         <h4> This gets {stars} stars! </h4>
-        <button onClick={onDeleteReview}> Delete Review </button>
+        <button className ="button" onClick={onDeleteReview}> Delete Review </button>
         {showEdit ? (
             <>
-            <button onClick={()=> setShowEdit(false)}>Edit</button>
+            <button className ="button" onClick={()=> setShowEdit(false)}>Edit</button>
             </>
         ) : (
             <>

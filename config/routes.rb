@@ -6,7 +6,6 @@ Rails.application.routes.draw do
   delete '/reviewList/reviews/:id', to: 'reviews#destroy'
   post '/signup', to: 'users#create'
   post '/reviews', to: 'reviews#create'
-  get '/reviews', to: 'reviews#index'
   get '/me', to: 'users#show'
   patch '/reviewList/reviews/:id', to: 'reviews#update'
   get "*path", to: "fallback#index", constraints: ->(req) { !req.xhr? && req.format.html? }
