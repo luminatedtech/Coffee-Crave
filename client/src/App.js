@@ -3,7 +3,6 @@ import Login from "./Login";
 import ShopList from "./ShopList";
 import NavBar from "./NavBar"; 
 import {Routes, Route, BrowserRouter} from "react-router-dom"
-import ReviewList from "./ReviewList";
 import ReviewForm from "./ReviewForm";
 
 function App() {
@@ -26,7 +25,6 @@ function App() {
       <Routes>
         <Route path="/" element={<ShopList/>}/>
         <Route path="/newReview/:shopId" element={<ReviewForm user={user}/>}/>
-        <Route path="/shops/:shopId/reviews" element={<ReviewList/>}/>
       </Routes>
       
       </BrowserRouter>

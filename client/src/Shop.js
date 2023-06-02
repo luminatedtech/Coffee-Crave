@@ -14,7 +14,7 @@ useEffect(()=> {
     getReviews(id)
 },[id])
 
-console.log(reviews)
+const reviewCount = reviews.length
 
     return (
         <>
@@ -24,6 +24,7 @@ console.log(reviews)
                 <h1>{`${index + 1}. ${name}`}</h1>
                 <p>Address: {address}</p>
                 <p>Hours: {hours}</p>
+                <p> Number of reviews: {reviewCount}</p>
             </div>
             
             <Link className ="link" to= {`/newReview/${id}`}>
