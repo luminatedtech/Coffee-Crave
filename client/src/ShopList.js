@@ -12,7 +12,7 @@ function ShopList () {
 }, [])
 return (
     <div className="shopList"> {shops.map((shop,i)=>(
-        <Shop key={shop.id} id={shop.id} name={shop.name} image_url={shop.image_url} reviews={shop.reviews} address={shop.address} index={i}/>
+        <Shop key={shop.id} id={shop.id} image_url={shop.image_url} reviews={shop.reviews} address={shop.address} hours={shop.hours} name={shop.name} index={i}/>
     ))}
 
     </div>

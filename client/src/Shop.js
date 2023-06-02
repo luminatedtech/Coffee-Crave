@@ -2,7 +2,7 @@ import React, {useState, useEffect} from "react";
 import ReviewList from "./ReviewList";
 import {Link} from "react-router-dom"
 
-function Shop ({id,name,address,image_url,index}) {
+function Shop ({id,address,image_url,index,hours,name}) {
 const [reviews,setReviews] = useState([])
 const [showReviews,setShowReviews] = useState(true)
 function getReviews (shopId) {
@@ -12,17 +12,18 @@ function getReviews (shopId) {
 }
 useEffect(()=> {
     getReviews(id)
-},[])
+},[id])
 
 console.log(reviews)
 
     return (
         <>
         <div className="shop">
-            <img src={image_url}/> 
+            <img alt="shopLogo" src={image_url}/> 
             <div className="shopInfo">
                 <h1>{`${index + 1}. ${name}`}</h1>
                 <p>Address: {address}</p>
+                <p>Hours: {hours}</p>
             </div>
             
             <Link className ="link" to= {`/newReview/${id}`}>

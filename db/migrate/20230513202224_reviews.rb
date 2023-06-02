@@ -6,6 +6,7 @@ class Reviews < ActiveRecord::Migration[6.1]
       t.string :comment
       t.string :title
       t.integer :stars 
+      t.string :name
     end 
   end
 end

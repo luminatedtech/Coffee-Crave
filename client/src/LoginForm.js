@@ -25,6 +25,7 @@ const [isLoading, setIsLoading] = useState(false)
 			}
 		})
 	}
+	console.log(errors)
 	return (
 		<div className="formContainer">
 				<form className="loginForm" onSubmit={handleSubmit}>
@@ -42,11 +43,12 @@ const [isLoading, setIsLoading] = useState(false)
 						onChange={(e)=> setPassword(e.target.value)}
 					/>
 					<br/>
-					<input
-						type="submit"
-						name="submit"
-						value="Login"
-					/>
+					<button className = "button" type="submit" name="submit" value="Login">
+						{isLoading ? "Loading..." : "Login"}
+					</button>
+						
+					
+					
 				</form>
 		</div>
 	)

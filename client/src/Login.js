@@ -8,7 +8,7 @@ return (
         <section>
             <div className="logoDiv">
             <h1 className="logo"> CoffeeCrave </h1>
-            <img className="coffeeLogo" src="coffeelogo.jpg"/>
+            <img alt="coffeephoto" className="coffeeLogo" src="coffeelogo.jpg"/>
             </div>
         
         {showLogin ? (
@@ -26,7 +26,7 @@ return (
         <SignUpForm onLogin={onLogin}/>
         <p>
         Already have an account?
-        <button className="b" onClick={()=> setShowLogin(true)}>
+        <button className="button" onClick={()=> setShowLogin(true)}>
         Log in
         </button>
         </p>

@@ -4,7 +4,6 @@ import ShopList from "./ShopList";
 import NavBar from "./NavBar"; 
 import {Routes, Route, BrowserRouter} from "react-router-dom"
 import ReviewList from "./ReviewList";
-import Shop from "./Shop";
 import ReviewForm from "./ReviewForm";
 
 function App() {

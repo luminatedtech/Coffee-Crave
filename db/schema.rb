@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 2023_05_13_202235) do
     t.string "comment"
     t.string "title"
     t.integer "stars"
+    t.string "name"
   end
 
   create_table "shops", force: :cascade do |t|
@@ -25,6 +26,7 @@ ActiveRecord::Schema.define(version: 2023_05_13_202235) do
     t.string "image_url"
     t.string "address"
     t.string "phone_number"
+    t.string "hours"
   end
 
   create_table "users", force: :cascade do |t|

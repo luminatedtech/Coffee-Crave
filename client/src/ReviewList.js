@@ -7,7 +7,7 @@ return (
     
     <div>
             {reviews.map((review)=> (
-                <Review key={review.id} getReviews={getReviews} id={review.id} comment={review.comment} stars={review.stars} title={review.title} name={review} />
+                <Review key={review.id} getReviews={getReviews} name={review.name} id={review.id} comment={review.comment} stars={review.stars} title={review.title} />
             ))}
     </div>
 )
