@@ -57,7 +57,7 @@ You will first be greeted by a login form. If it is your first time, you can sig
 
 ## Credits
 Shoutouts to my lovely friends who helped me out immensely. Check our their profiles and project down below
-Kenneth Lee: github link: 
+Kenneth Lee: github link: https://github.com/kennethslee613?fbclid=IwAR21w2k-HWRCd7FHdFeMHPQ2z3y1D8SOBpeKd93LQgF_zikWyxa7DxbWRww
 Conor Yuen: github link: https://github.com/HeroicSam
 
 ## license
