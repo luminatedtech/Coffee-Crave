@@ -13,13 +13,13 @@ class ReviewsController < ApplicationController
         end 
     end 
     def index
-        user = User.find_by(id: session[:user_id])
-        if user
-            reviews = Review.all
-            render json: reviews, include: :user
+        if params[:shop_id]
+            shop = Shop.find_by(id: params[:shop_id])
+            reviews = shop.reviews
         else 
-            render json: {errors: ["Not authorized"]}, status: :unauthorized
+            reviews = Review.all
         end 
+        render json: reviews
     end 
     def destroy 
         review = Review.find_by(id: params[:id])
@@ -46,3 +46,11 @@ private
         params.permit(:user_id, :shop_id, :comment, :title, :stars)
     end 
 end
+
+# user = User.find_by(id: session[:user_id])
+# if user
+#     reviews = Review.all
+#     render json: reviews, include: :user
+# else 
+#     render json: {errors: ["Not authorized"]}, status: :unauthorized
+# end 

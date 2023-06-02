@@ -1,5 +1,5 @@
 import React,{ useState } from "react"
-import { useParams, useNavigate, Navigate } from "react-router-dom"
+import { useParams, useNavigate } from "react-router-dom"
 
 function ReviewForm () {
     const navigate = useNavigate()
@@ -7,7 +7,6 @@ function ReviewForm () {
     const [stars, setStars] = useState(1)
     const [title, setTitle] = useState("")
     const [isLoading,setIsLoading] = useState(false)
-    const [errors,setErrors] = useState([])
     const { shopId } = useParams()
     function handleSubmit(e) {
         e.preventDefault()

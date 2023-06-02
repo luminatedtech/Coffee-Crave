@@ -1,8 +1,16 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
+import ReviewList from "./ReviewList";
 import {Link} from "react-router-dom"
 
-function Shop ({id,name,address,image_url,reviews,index}) {
-
+function Shop ({id,name,address,image_url,index}) {
+const [reviews,setReviews] = useState([])
+const [showReviews,setShowReviews] = useState(true)
+useEffect(()=> {
+    fetch(`/shops/${id}/reviews`)
+    .then((r)=>r.json())
+    .then((reviews)=>setReviews(reviews))
+},[])
+console.log(reviews)
     return (
         <div className="shop">
             <img src={image_url}/> 
@@ -14,10 +22,19 @@ function Shop ({id,name,address,image_url,reviews,index}) {
             <Link className ="link" to= {`/newReview/${id}`}>
                 Click me for new review
             </Link >
-            
-            <Link className ="link" to= {`/reviewList/${id}`}> 
-                 View Reviews 
-            </Link>
+            <section>
+            {showReviews ? (
+                <>
+                <button onClick={()=>setShowReviews(false)}>
+                    Click to see reviews
+                </button>
+                </>
+            ) : (
+                <>
+                <ReviewList reviews = {reviews} />
+                </>
+            )}
+            </section>      
         </div>
     )
 }

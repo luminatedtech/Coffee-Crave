@@ -4,7 +4,7 @@ class ShopsController < ApplicationController
         render json: shops, include: :reviews
     end 
     def show
-        shop = Shop.find_by(id: params[:id])
+        shop = Shop.find_by(params[:id])
         if shop
             render json: shop
         else 

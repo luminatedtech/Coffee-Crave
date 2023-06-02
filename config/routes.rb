@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
+  resources :shops, only: [:show,:index] do
+    resources :reviews, only: [:show,:index]
+  end 
   resources :users,:reviews,:shops,:sessions, only: [:create,:show,:destroy,:update,:index]
+  
+  get '/shops/:shop_id/reviews', to: 'reviews#index'
   get '/', to: 'shops#index'
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'

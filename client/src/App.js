@@ -26,7 +26,7 @@ function App() {
       <Routes>
         <Route path="/" element={<ShopList/>}/>
         <Route path="/newReview/:shopId" element={<ReviewForm user={user}/>}/>
-        <Route path="/reviewList/:shopId" element={<ReviewList/>}/>
+        <Route path="/shops/:shopId/reviews" element={<ReviewList/>}/>
       </Routes>
       
       </BrowserRouter>

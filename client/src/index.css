@@ -103,3 +103,13 @@ img {
 .text {
   text-align: center;
 }
+.link {
+  
+  outline: none;
+  text-align: center;
+  line-height: 3;
+  text-decoration: bold;
+}
+a {
+  font-size: 12px;
+}
