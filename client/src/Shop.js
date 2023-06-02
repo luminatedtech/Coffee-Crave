@@ -14,11 +14,13 @@ useEffect(()=> {
     getReviews(id)
 },[id])
 
+console.log(showReviews)
+
 const reviewCount = reviews.length
 
     return (
         <>
-        <div className="shop">
+          <div className="shop">
             <img alt="shopLogo" src={image_url}/> 
             <div className="shopInfo">
                 <h1>{`${index + 1}. ${name}`}</h1>

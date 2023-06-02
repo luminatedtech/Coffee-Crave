@@ -18,7 +18,7 @@ function App() {
   if (!user) return <Login onLogin={setUser} />
   return (
     
-    <div>
+    <div className="App">
       
     <BrowserRouter> 
     <NavBar user={user} setUser={setUser}/>
