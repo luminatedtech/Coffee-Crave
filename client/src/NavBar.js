@@ -1,7 +1,7 @@
 import React from "react"
-import { Link,BrowserRouter } from "react-router-dom"
+import { Link} from "react-router-dom"
 
-function NavBar ({ user, setUser }) {
+function NavBar ({  setUser }) {
 	function handleLogoutClick() {
 		fetch("/logout", {method: "DELETE"}).then((r)=> {
 			if (r.ok) {
@@ -11,15 +11,15 @@ function NavBar ({ user, setUser }) {
 	}
 	return(
 	<header>
-		<BrowserRouter>
-		<Link to ="/" > Coffee Crave</Link>
+		
+		<Link to ="/" > Coffee Crave </Link>
 		
 		<nav>
 			<button className="button" onClick={handleLogoutClick}>
 				Logout
 			</button>
 		</nav>
-		</BrowserRouter>
+		
 		
 	</header>
 	)

@@ -24,7 +24,7 @@ class ReviewsController < ApplicationController
     def destroy 
         review = Review.find_by(id: params[:id])
         user = User.find_by(id: session[:user_id])
-        if review && session[:user_id] == review.user.id 
+        if review && session[:user_id] === review.user.id 
             review.destroy
             head :no_content
         else 

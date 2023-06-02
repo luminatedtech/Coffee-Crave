@@ -5,13 +5,19 @@ import {Link} from "react-router-dom"
 function Shop ({id,name,address,image_url,index}) {
 const [reviews,setReviews] = useState([])
 const [showReviews,setShowReviews] = useState(true)
-useEffect(()=> {
-    fetch(`/shops/${id}/reviews`)
+function getReviews (shopId) {
+    fetch(`/shops/${shopId}/reviews`)
     .then((r)=>r.json())
     .then((reviews)=>setReviews(reviews))
+}
+useEffect(()=> {
+    getReviews(id)
 },[])
+
 console.log(reviews)
+
     return (
+        <>
         <div className="shop">
             <img src={image_url}/> 
             <div className="shopInfo">
@@ -23,19 +29,17 @@ console.log(reviews)
                 Click me for new review
             </Link >
             <section>
-            {showReviews ? (
+            {showReviews && (
                 <>
                 <button onClick={()=>setShowReviews(false)}>
                     Click to see reviews
                 </button>
                 </>
-            ) : (
-                <>
-                <ReviewList reviews = {reviews} />
-                </>
             )}
             </section>      
         </div>
+        {!showReviews && <ReviewList getReviews={()=>getReviews(id)} reviews={reviews} />}
+        </>
     )
 }
 

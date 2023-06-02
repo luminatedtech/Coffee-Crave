@@ -1,18 +1,17 @@
 import React, {useState} from "react"
 import EditForm from "./EditForm"
-function Review ({stars,comment,title,id}) {
+function Review ({stars,comment,title,id,getReviews}) {
     const [showEdit, setShowEdit] = useState(true)
     function onDeleteReview () {
         fetch(`/reviews/${id}`,{
             method: "DELETE"
-        }).then((r)=> {
-            if (r.ok){
-                console.log("Deleted")
-            }
-            else {
-                console.log("oops")
-            }
         })
+        .then(()=> {
+            console.log(id) 
+            getReviews()
+            
+        })
+          
     }
 return (
     <div> 

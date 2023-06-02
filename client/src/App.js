@@ -21,8 +21,9 @@ function App() {
   return (
     
     <div>
-      <NavBar user={user} setUser={setUser}/>
+      
     <BrowserRouter> 
+    <NavBar user={user} setUser={setUser}/>
       <Routes>
         <Route path="/" element={<ShopList/>}/>
         <Route path="/newReview/:shopId" element={<ReviewForm user={user}/>}/>
