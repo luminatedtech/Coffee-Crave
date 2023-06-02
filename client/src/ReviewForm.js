@@ -26,8 +26,8 @@ function ReviewForm () {
         navigate('/')
     }
     return (
-        <section className="reviewForm">
-            <h2> Create Review </h2>
+        <div className="reviewFormContainer">
+            <h2 > Create Review </h2>
             <form onSubmit={handleSubmit}>
                 <div>
                     <label> Title </label>
@@ -54,12 +54,12 @@ function ReviewForm () {
                     />
                 </div>
                 <div>
-                    <button type="submit">
+                    <button className="button" type="submit">
                         {isLoading ? "Loading.." : "Submit Review"}
                     </button>
                 </div>
             </form>
-        </section>
+        </div>
     )
 }
 

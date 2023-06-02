@@ -113,3 +113,10 @@ img {
 a {
   font-size: 12px;
 }
+.reviewFormContainer input {
+  display: block;
+  width: 100%;
+  padding: 0.5rem 0.8rem 0.5rem 0.8rem;
+  border: 0;
+  border-radius: 5px;
+} 

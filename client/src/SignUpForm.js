@@ -33,7 +33,8 @@ function SignUpForm( { onLogin }){
         })
     }
     return (
-        <form onSubmit={handleSubmit}>
+        <div className="formContainer">
+            <form onSubmit={handleSubmit}>
             <input
             placeholder="Username"
             type="text"
@@ -68,6 +69,8 @@ function SignUpForm( { onLogin }){
             <button className="button" type="submit">{isLoading ? "Loading..": "Sign Up"} </button>
 
         </form>
+        </div>
+        
     )
 }
 
