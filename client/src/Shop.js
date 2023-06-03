@@ -23,27 +23,30 @@ const reviewCount = reviews.length
           <div className="shop">
             <img alt="shopLogo" src={image_url}/> 
             <div className="shopInfo">
-                <h1>{`${index + 1}. ${name}`}</h1>
-                <p>Address: {address}</p>
-                <p>Hours: {hours}</p>
-                <p> Number of reviews: {reviewCount}</p>
+              <h1>{`${index + 1}. ${name}`}</h1>
+              <p><b>Address:</b> {address}</p>
+              <p><b>Hours:</b> {hours}</p>
+              <div className="reviewButtonsContainer">
+                <Link className ="link" to= {`/newReview/${id}`}>
+                  <button className="addReviewsButton">
+                    Add Review
+                  </button>
+                </Link >
+                {showReviews && (
+                  <>
+                    <button
+                      className="seeReviewsButton"
+                      onClick={()=>setShowReviews(false)}
+                    >
+                      {`See Reviews (${reviewCount})`} 
+                    </button>
+                  </>
+                )}
+              </div>
             </div>
-            
-            <Link className ="link" to= {`/newReview/${id}`}>
-                Click me for new review
-            </Link >
-            <section>
-            {showReviews && (
-                <>
-                <button onClick={()=>setShowReviews(false)}>
-                    Click to see reviews
-                </button>
-                </>
-            )}
-            </section>      
-        </div>
+          </div>
         {!showReviews && <ReviewList getReviews={()=>getReviews(id)} reviews={reviews} />}
-        </>
+      </>
     )
 }
 
