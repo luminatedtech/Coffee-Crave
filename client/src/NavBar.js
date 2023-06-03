@@ -17,13 +17,9 @@ function NavBar ({  setUser }) {
         <p>Coffee Crave</p>
       </Link>
     </div>
-		<nav>
-			<button className="button" onClick={handleLogoutClick}>
-				Logout
-			</button>
-		</nav>
-		
-		
+    <button className="logoutButton" onClick={handleLogoutClick}>
+      Logout
+    </button>
 	</header>
 	)
 }

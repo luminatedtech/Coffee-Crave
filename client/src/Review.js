@@ -13,28 +13,32 @@ function Review ({stars,comment,title,id,getReviews,name}) {
           
     }
 return (
-    <div> 
-        <h1> {title} </h1>
-        <h4> {name} wrote {comment} </h4> 
-        <h4> This gets {stars} stars! </h4>
-        <button className ="button" onClick={onDeleteReview}> Delete Review </button>
-        {showEdit ? (
-            <>
-            <button className ="button" onClick={()=> setShowEdit(false)}>Edit</button>
-            </>
-        ) : (
-            <>
-            <EditForm id={id}/>
-            <p>
-                Done?
-                <button onClick={()=>setShowEdit(true)}>
-                    Exit
-                </button>
-            </p>
-            </>
-        )
-    }
-        
+    <div className="review">
+      <div className="reviewContainer">
+        <p className="commenter"><span>{name}</span> <em>commented</em></p>
+        <h2> {title} </h2>
+        <p> This gets {stars} stars! </p>
+      </div>
+      {showEdit ? (
+        <>
+          <button className ="editButton" onClick={()=> setShowEdit(false)}>
+            <img alt="edit" src="edit.png" />
+          </button>
+        </>
+      ) : (
+        <>
+          <EditForm id={id}/>
+          <p>
+            Done?
+            <button onClick={()=>setShowEdit(true)}>
+              Exit
+            </button>
+          </p>
+        </>
+      )}
+      <button className ="deleteButton" onClick={onDeleteReview}>
+        <img alt="delete" src="delete.png" />
+      </button>
     </div>
 )
 }

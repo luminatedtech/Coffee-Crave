@@ -27,13 +27,17 @@ header {
   position: fixed;
   display: flex;
   width: 100%;
-  height: 4rem;
+  height: 5rem;
   justify-content: space-between;
   align-items: center;
   padding: 1rem 3rem 1rem 3rem;
   background-color: white;
   z-index: 100;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+button:hover {
+  cursor: pointer;
 }
 
 a {
@@ -61,10 +65,27 @@ a {
   height: 3rem;
 }
 
+.logoutButton {
+  padding: .75rem 1rem .75rem 1rem;
+  border-radius: 8px;
+  background-color: #0276FF;
+  width: 45%;
+  font-weight: 500;
+  font-size: 1rem;
+  border: none;
+  color: white;
+  transition: background .13s ease-in-out;
+  max-width: 6rem;
+}
+
+.logoutButton:hover {
+  background-color: #1C84FF;
+}
+
 .shopList {
   height: 100%;
   width: 50%;
-  padding-top: 5rem;
+  padding-top: 6rem;
   border-right: 1px solid lightgray;
 }
 
@@ -92,11 +113,12 @@ a {
 .shopInfo {
   display: flex;
   flex-direction: column;
+  width: 40%;
   height: 100%;
   max-height: 11rem;
   justify-content: start;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
+  padding-top: .5rem;
+  padding-bottom: .5rem;
   border-color: #ebebeb;
 }
 
@@ -112,23 +134,88 @@ a {
   display: flex;
   width: 100%;
   margin-top: auto;
-
 }
 
 .addReviewsButton {
   padding: .75rem 1rem .75rem 1rem;
   border-radius: 8px;
+  border: none;
+  width: 100%;
+  font-weight: 500;
+  margin-left: .5rem;
+  border: 1px solid lightgray;
+  transition: background .13s ease-in-out;
+}
+
+.addReviewsButton:hover {
+  background-color: #ddd;
+}
+
+.link {
+  width: 45%;
 }
 
 .seeReviewsButton {
-  margin-left: 1rem;
   padding: .75rem 1rem .75rem 1rem;
   border-radius: 8px;
+  background-color: #0276FF;
+  width: 45%;
+  font-weight: 500;
+  border: none;
+  color: white;
+  transition: background .13s ease-in-out;
 }
 
 .seeReviewsButton:hover {
-  cursor: pointer;
-  background-color: gray;
+  background-color: #1C84FF;
+}
+
+.editButton {
+  border: 1px solid lightgray;
+  border-radius: 8px;
+  padding: .25rem;
+  margin-left: auto;
+  margin-right: .5rem;
+  align-self: center;
+}
+
+.deleteButton {
+  background-color: #D73E3E;
+  border-radius: 8px;
+  padding: .25rem;
+  border: none;
+  max-width: 3rem;
+  max-height: 3rem;
+  align-self: center;
+}
+
+.reviewList {
+  display: flex;
+  flex-direction: column;
+  row-gap: 2rem;
+  padding: 1rem 3rem 1rem 3rem;
+  background-color: #ECECEC;
+  width: 100%;
+}
+
+.review {
+  display: flex;
+  width: 100%;
+}
+
+.reviewContainer h2 {
+  margin-bottom: .25rem;
+}
+
+.commenter {
+  margin-bottom: .5rem;
+}
+
+.noReviewContainer {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  font-size: .75rem;
 }
 
 .reviewForm {
@@ -170,24 +257,8 @@ a {
   margin-top:40px;
 }
 
-.button {
-  display: block;
-  width: 100%;
-  padding: 0.5rem 0.8rem 0.5rem 0.8rem;
-  border: 0;
-  border-radius: 5px;
-}
-
 .text {
   text-align: center;
-}
-
-.link {
-  
-  outline: none;
-  text-align: center;
-  line-height: 3;
-  text-decoration: bold;
 }
 
 .reviewFormContainer input {

@@ -12,9 +12,10 @@ function getReviews (shopId) {
 }
 useEffect(()=> {
     getReviews(id)
+    console.log(reviews)
+
 },[id])
 
-console.log(showReviews)
 
 const reviewCount = reviews.length
 
@@ -27,11 +28,6 @@ const reviewCount = reviews.length
               <p><b>Address:</b> {address}</p>
               <p><b>Hours:</b> {hours}</p>
               <div className="reviewButtonsContainer">
-                <Link className ="link" to= {`/newReview/${id}`}>
-                  <button className="addReviewsButton">
-                    Add Review
-                  </button>
-                </Link >
                 {showReviews && (
                   <>
                     <button
@@ -42,6 +38,11 @@ const reviewCount = reviews.length
                     </button>
                   </>
                 )}
+                <Link className ="link" to= {`/newReview/${id}`}>
+                  <button className="addReviewsButton">
+                    Add Review
+                  </button>
+                </Link >
               </div>
             </div>
           </div>
