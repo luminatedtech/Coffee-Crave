@@ -11,9 +11,12 @@ function NavBar ({  setUser }) {
 	}
 	return(
 	<header>
-		
-		<Link to ="/" > Coffee Crave </Link>
-		
+    <div className="logoContainer">
+      <Link to ="/" >
+        <img alt="coffeephoto" className="navBarLogo" src="coffeelogo.png"/>
+        <p>Coffee Crave</p>
+      </Link>
+    </div>
 		<nav>
 			<button className="button" onClick={handleLogoutClick}>
 				Logout
