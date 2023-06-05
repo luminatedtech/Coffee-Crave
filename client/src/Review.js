@@ -1,6 +1,6 @@
 import React, {useState} from "react"
 import EditForm from "./EditForm"
-function Review ({stars,comment,title,id,getReviews,name}) {
+function Review ({stars,comment,title,id,getReviews,username}) {
     const [showEdit, setShowEdit] = useState(true)
     function onDeleteReview () {
         fetch(`/reviews/${id}`,{
@@ -15,7 +15,7 @@ function Review ({stars,comment,title,id,getReviews,name}) {
 return (
     <div className="review">
       <div className="reviewContainer">
-        <p className="commenter"><span>{name}</span> <em>commented</em></p>
+        <p className="commenter"><span>{username}</span> <em>commented</em> {comment}</p>
         <h2> {title} </h2>
         <p> This gets {stars} stars! </p>
       </div>

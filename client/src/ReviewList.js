@@ -9,7 +9,7 @@ return (
     
     <div className="reviewList">
       {reviews.map((review)=> (
-          <Review key={review.id} getReviews={getReviews} name={review.name} id={review.id} comment={review.comment} stars={review.stars} title={review.title} />
+          <Review key={review.id} getReviews={getReviews} username={review.user.username} id={review.id} comment={review.comment} stars={review.stars} title={review.title} />
       ))}
       {!reviewCount && 
         <div className="noReviewContainer">
