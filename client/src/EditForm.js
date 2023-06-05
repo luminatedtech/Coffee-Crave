@@ -1,5 +1,6 @@
-import React, {useState} from "react"
+import React, {useState,useNavigate} from "react"
 function EditForm ({id}) {
+    const navigate = useNavigate()
     const [comment,setComment] = useState("")
     const [title, setTitle] = useState("")
     const [stars, setStars] = useState(1)
@@ -18,6 +19,7 @@ function EditForm ({id}) {
         })
         .then((r)=>r.json())
         .then((updatedReview)=> console.log(updatedReview))
+        navigate('/')
     }
     return(
         <section className="editForm">

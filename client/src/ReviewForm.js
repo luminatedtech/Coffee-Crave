@@ -4,7 +4,6 @@ import { LoginContext } from "./App"
 
 function ReviewForm () {
     const login = useContext(LoginContext)
-    console.log(login)
     const navigate = useNavigate()
     const [comment,setComment] = useState ("")
     const [stars, setStars] = useState(1)
