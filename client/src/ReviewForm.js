@@ -1,7 +1,10 @@
-import React,{ useState } from "react"
+import React,{ useState,useContext } from "react"
 import { useParams, useNavigate } from "react-router-dom"
+import { LoginContext } from "./App"
 
 function ReviewForm () {
+    const login = useContext(LoginContext)
+    console.log(login)
     const navigate = useNavigate()
     const [comment,setComment] = useState ("")
     const [stars, setStars] = useState(1)
@@ -18,15 +21,17 @@ function ReviewForm () {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
+                name,
                 comment,
                 stars,
                 title,
-                 shop_id: shopId,
+                shop_id: shopId,
             }),
         })
         navigate('/')
     }
     return (
+        
         <div className="reviewFormContainer">
             <h2 > Create Review </h2>
             <form onSubmit={handleSubmit}>
@@ -63,7 +68,7 @@ function ReviewForm () {
                     />
                 </div>
                 <div>
-                    <button className="button" type="submit">
+                    <button className="addReviewsButton" type="submit">
                         {isLoading ? "Loading.." : "Submit Review"}
                     </button>
                 </div>

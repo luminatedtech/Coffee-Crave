@@ -19,7 +19,7 @@ class ReviewsController < ApplicationController
         else 
             reviews = Review.all
         end 
-        render json: reviews
+        render json: reviews, include: [:user]
     end 
     def destroy 
         review = Review.find_by(id: params[:id])

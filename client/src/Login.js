@@ -1,9 +1,10 @@
 import LoginForm from "./LoginForm";
 import SignUpForm from "./SignUpForm";
 import { useState } from 'react';
-function Login({ onLogin }) {
+function Login() {
 const [showLogin, setShowLogin] = useState(true)
 return (
+    
     <div className="loginDiv">
         <section>
             <div className="logoDiv">
@@ -13,7 +14,7 @@ return (
         
         {showLogin ? (
         <>
-        <LoginForm onLogin={onLogin}/>
+        <LoginForm/>
         <p className="text">
             Don't have an account?
             <button className="button" color="secondary" onClick={()=> setShowLogin(false)}>
@@ -23,7 +24,7 @@ return (
         </>
         ) : (
         <>
-        <SignUpForm onLogin={onLogin}/>
+        <SignUpForm/>
         <p>
         Already have an account?
         <button className="button" onClick={()=> setShowLogin(true)}>

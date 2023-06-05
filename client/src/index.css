@@ -262,9 +262,15 @@ a {
 }
 
 .reviewFormContainer input {
-  display: block;
+  display:flex;
   width: 100%;
   padding: 0.5rem 0.8rem 0.5rem 0.8rem;
   border: 0;
   border-radius: 5px;
 } 
+
+.reviewFormContainer {
+  position: absolute;
+  margin-top: 200px;
+
+}

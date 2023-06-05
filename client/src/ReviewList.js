@@ -2,7 +2,7 @@ import React from "react";
 
 import Review from "./Review";
 function ReviewList ({reviews,getReviews}) {
-
+ console.log(reviews)
   const reviewCount = reviews.length
 
 return (

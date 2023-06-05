@@ -1,6 +1,7 @@
-import React, { useState } from "react";
-
-function SignUpForm( { onLogin }){
+import React, { useState,useContext } from "react";
+import { LoginContext } from "./App";
+function SignUpForm(){
+    const setLogin = useContext(LoginContext)
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
     const [passwordConfirmation, setPasswordConfirmation] = useState("")
@@ -26,7 +27,7 @@ function SignUpForm( { onLogin }){
         }).then((r)=> {
             setIsLoading(false);
             if (r.ok) {
-                r.json().then((user)=> onLogin( user));
+                r.json().then((user)=> setLogin( user));
             } else {
                 r.json().then((err)=> setErrors(err.errors))
             }

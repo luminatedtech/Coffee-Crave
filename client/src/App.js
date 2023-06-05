@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState,createContext} from "react";
 import Login from "./Login";
 import ShopList from "./ShopList";
 import NavBar from "./NavBar"; 
 import {Routes, Route, BrowserRouter} from "react-router-dom"
 import ReviewForm from "./ReviewForm";
-
+export const LoginContext = createContext(null)
 function App() {
   const [user, setUser] = useState(null);
-  
+
   useEffect(() => {
     fetch('/me').then((r)=> {
       if (r.ok) {
@@ -15,7 +15,11 @@ function App() {
       }
     })
   }, [])
-  if (!user) return <Login onLogin={setUser} />
+  if (!user) return (
+    <LoginContext.Provider value={setUser}>
+      <Login/>
+    </LoginContext.Provider>
+  )
   return (
     
     <div className="App">
