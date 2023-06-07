@@ -1,10 +1,10 @@
-import React, {useState,useNavigate} from "react"
-function EditForm ({id}) {
-    const navigate = useNavigate()
+import React, {useState} from "react"
+function EditForm ({id,onUpdateReview}) {
+    
     const [comment,setComment] = useState("")
     const [title, setTitle] = useState("")
     const [stars, setStars] = useState(1)
-    function onUpdateReview (e) {
+    function onUpdateReviewClick (e) {
         e.preventDefault()
         fetch(`reviews/${id}`,{
             method: "PATCH",
@@ -18,13 +18,13 @@ function EditForm ({id}) {
             }),
         })
         .then((r)=>r.json())
-        .then((updatedReview)=> console.log(updatedReview))
-        navigate('/')
+        .then((updatedReview)=> onUpdateReview(updatedReview))
+        
     }
     return(
         <section className="editForm">
             <h2> Edit Review </h2>
-            <form onSubmit={onUpdateReview}>
+            <form onSubmit={onUpdateReviewClick}>
                 <div>
                     <label> Title </label>
                     <input

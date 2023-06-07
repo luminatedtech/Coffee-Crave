@@ -1,7 +1,7 @@
 class ShopsController < ApplicationController
     def index
         shops = Shop.all 
-        render json: shops
+        render json: shops,methods: [:shop_order]
     end 
     def show
         shop = Shop.find_by(params[:id])

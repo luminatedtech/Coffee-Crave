@@ -6,7 +6,7 @@ class ReviewsController < ApplicationController
             if review.valid? && session[:user_id] = review.user.id
                 render json: review, include: :user, status: :created
             else
-                render json: {errors: ["Not a valid review"]}, status: :unprocessable_entity
+                render json: {errors: review.errors.full_messages }, status: :unprocessable_entity
             end 
         else 
             render json: {errors: ["Not logged in"]}, status: :unauthorized
@@ -28,7 +28,7 @@ class ReviewsController < ApplicationController
             review.destroy
             head :no_content
         else 
-            render json: {error: ["Review not found"]}, status: :not_found
+            render json: {errors: ["Review belongs to different user"]}, status: :unauthorized
         end 
     end 
     def update 
@@ -36,9 +36,9 @@ class ReviewsController < ApplicationController
         user = User.find_by(id: session[:id])
         if session[:user_id] == review.user.id
             review.update(review_params)
-            render json: review
+            render json: review, include: :user
         else 
-            render json: {error: "Not the right User"}
+            render json: {errors: review.errors.full_messages}, status: :unauthorized
         end
     end 
 private

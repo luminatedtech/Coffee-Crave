@@ -1,13 +1,20 @@
 import React, {useState} from "react"
 import EditForm from "./EditForm"
-function Review ({stars,comment,title,id,getReviews,username}) {
+function Review ({stars,comment,title,id,getReviews,username,onUpdateReview}) {
     const [showEdit, setShowEdit] = useState(true)
+    const [errors,setErrors] = useState([])
+    console.log({username})
     function onDeleteReview () {
         fetch(`/reviews/${id}`,{
             method: "DELETE"
         })
-        .then(()=> {
+        .then((r)=> {
+            
+          if (r.ok) {
             getReviews()
+          }else {
+            r.json().then((err)=>setErrors(err.errors))
+          }
             
         })
           
@@ -27,7 +34,7 @@ return (
         </>
       ) : (
         <>
-          <EditForm id={id}/>
+          <EditForm onUpdateReview={onUpdateReview} id={id}/>
           <p>
             Done?
             <button onClick={()=>setShowEdit(true)}>
@@ -39,6 +46,11 @@ return (
       <button className ="deleteButton" onClick={onDeleteReview}>
         <img alt="delete" src="delete.png" />
       </button>
+      <div>
+          {errors.map((error)=> (
+              <span> {error} </span>
+            ))}
+      </div>
     </div>
 )
 }

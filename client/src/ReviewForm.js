@@ -1,14 +1,15 @@
-import React,{ useState,useContext } from "react"
+import React,{ useState } from "react"
 import { useParams, useNavigate } from "react-router-dom"
-import { LoginContext } from "./App"
+
 
 function ReviewForm () {
-    const login = useContext(LoginContext)
+    
     const navigate = useNavigate()
     const [comment,setComment] = useState ("")
     const [stars, setStars] = useState(1)
     const [title, setTitle] = useState("")
     const [isLoading,setIsLoading] = useState(false)
+    const [errors, setErrors] = useState([])
     const { shopId } = useParams()
     function handleSubmit(e) {
         e.preventDefault()
@@ -24,8 +25,15 @@ function ReviewForm () {
                 title,
                 shop_id: shopId,
             }),
+        }).then((r)=> {
+            setIsLoading(false)
+            if (r.ok) {
+                navigate('/')
+            } else {
+                r.json().then((err)=> setErrors(err.errors))
+            }
         })
-        navigate('/')
+        
     }
     return (
         
@@ -60,6 +68,11 @@ function ReviewForm () {
                     <button className="addReviewsButton" type="submit">
                         {isLoading ? "Loading.." : "Submit Review"}
                     </button>
+                </div>
+                <div>
+                    {errors.map((error)=> (
+                        <span> {error} </span>
+                    ))}
                 </div>
             </form>
         </div>

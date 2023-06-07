@@ -46,7 +46,7 @@ const reviewCount = reviews.length
               </div>
             </div>
           </div>
-        {!showReviews && <ReviewList getReviews={()=>getReviews(id)} reviews={reviews} />}
+        {!showReviews && <ReviewList getReviews={()=>getReviews(id)} reviews={reviews} setReviews={setReviews}/>}
       </>
     )
 }
