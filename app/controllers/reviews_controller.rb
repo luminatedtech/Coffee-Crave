@@ -38,7 +38,7 @@ class ReviewsController < ApplicationController
             review.update(review_params)
             render json: review, include: :user
         else 
-            render json: {errors: review.errors.full_messages}, status: :unauthorized
+            render json: {errors: ["Review belongs to another user"]}, status: :unauthorized
         end
     end 
 private

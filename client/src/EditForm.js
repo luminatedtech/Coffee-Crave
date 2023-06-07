@@ -4,8 +4,11 @@ function EditForm ({id,onUpdateReview}) {
     const [comment,setComment] = useState("")
     const [title, setTitle] = useState("")
     const [stars, setStars] = useState(1)
+    const [errors,setErrors] = useState([])
+    const [isLoading,setIsLoading] = useState(false)
     function onUpdateReviewClick (e) {
         e.preventDefault()
+        setIsLoading(true)
         fetch(`reviews/${id}`,{
             method: "PATCH",
             headers: {
@@ -17,8 +20,14 @@ function EditForm ({id,onUpdateReview}) {
                 stars: stars,
             }),
         })
-        .then((r)=>r.json())
-        .then((updatedReview)=> onUpdateReview(updatedReview))
+        .then((r)=> {
+            setIsLoading(false)
+            if (r.ok){
+                r.json().then((updatedReview)=> onUpdateReview(updatedReview))
+            } else {
+                r.json().then((err) => setErrors(err.errors))
+            }
+        })
         
     }
     return(
@@ -51,8 +60,15 @@ function EditForm ({id,onUpdateReview}) {
                 </div>
                 <div>
                     <button className="button" type="submit">
-                        Finish
+                        {isLoading ? "Loading..." : "Finish"}
                     </button>
+                </div>
+                <div>
+                    {errors.map((error)=> (
+                        <span> 
+                            {error}
+                        </span>
+                    ))}
                 </div>
             </form>
         </section>
