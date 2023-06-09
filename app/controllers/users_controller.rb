@@ -1,11 +1,12 @@
 class UsersController < ApplicationController
+  
     def create
         user = User.create(user_params)
         session[:user_id] = user.id 
             if user.valid?
                 render json: user, status: :created
             else 
-                render json: {errors: ["User information not valid"]}, status: :unprocessable_entity
+                render json: {errors: user.errors.full_messages}, status: :unprocessable_entity
             end 
     end 
     def show

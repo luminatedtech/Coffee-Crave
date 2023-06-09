@@ -1,16 +1,14 @@
 class ReviewsController < ApplicationController
+    before_action :authorize
     def create
         user = User.find_by(id: session[:user_id])
-        if session[:user_id]
-            review = user.reviews.create(review_params)
+        review = user.reviews.create(review_params)
             if review.valid? && session[:user_id] = review.user.id
-                render json: review, include: :user, status: :created
+                render json: review, status: :created
             else
-                render json: {errors: review.errors.full_messages }, status: :unprocessable_entity
+                render json: {errors: review.errors.full_messages}, status: :unprocessable_entity
             end 
-        else 
-            render json: {errors: ["Not logged in"]}, status: :unauthorized
-        end 
+       
     end 
     def index
         if params[:shop_id]
@@ -19,7 +17,7 @@ class ReviewsController < ApplicationController
         else 
             reviews = Review.all
         end 
-        render json: reviews, include: [:user]
+        render json: reviews, include: :user
     end 
     def destroy 
         review = Review.find_by(id: params[:id])
@@ -38,7 +36,7 @@ class ReviewsController < ApplicationController
             review.update(review_params)
             render json: review, include: :user
         else 
-            render json: {errors: ["Review belongs to another user"]}, status: :unauthorized
+            render json: {errors: ["Review belongs to someone else"]}, status: :unauthorized
         end
     end 
 private

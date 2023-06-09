@@ -8,10 +8,9 @@ function SignUpForm(){
     const [profileUrl, setProfileUrl] = useState("")
     const [errors,setErrors] = useState([])
     const [isLoading, setIsLoading] = useState(false)
-
+    console.log(errors)
     function handleSubmit(e) {
         e.preventDefault();
-        setErrors([])
         setIsLoading(true)
         fetch("/signup", {
             method: "POST",
@@ -68,8 +67,15 @@ function SignUpForm(){
             onChange={(e)=> setProfileUrl(e.target.value)}
             />
             <button className="button" type="submit">{isLoading ? "Loading..": "Sign Up"} </button>
-
+           
         </form>
+        {errors.length > 0 && (
+                    <ul style={{ color: "red" }}>
+                    {errors.map((error) => (
+                     <li key={error}>{error}</li>
+                    ))}
+                  </ul>
+                )}
         </div>
         
     )

@@ -1,5 +1,5 @@
 import React,{ useState } from "react"
-import { useParams, useNavigate } from "react-router-dom"
+import { useParams,useNavigate } from "react-router-dom"
 
 
 function ReviewForm () {
@@ -64,16 +64,19 @@ function ReviewForm () {
                     onChange={(e)=>setStars(e.target.value)}
                     />
                 </div>
+         
                 <div>
                     <button className="addReviewsButton" type="submit">
                         {isLoading ? "Loading.." : "Submit Review"}
                     </button>
                 </div>
-                <div>
-                    {errors.map((error)=> (
-                        <span> {error} </span>
+                {errors.length > 0 && (
+                    <ul style={{ color: "red" }}>
+                    {errors.map((error) => (
+                     <li key={error}>{error}</li>
                     ))}
-                </div>
+                  </ul>
+                )}
             </form>
         </div>
     )

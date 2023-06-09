@@ -16,6 +16,9 @@ function NavBar ({  setUser }) {
         <img alt="coffeephoto" className="navBarLogo" src="coffeelogo.png"/>
         <p>Coffee Crave</p>
       </Link>
+	  <Link to='/shopForm'>
+		<button className="logoutButton">Add a Shop</button>
+	  </Link>
     </div>
     <button className="logoutButton" onClick={handleLogoutClick}>
       Logout

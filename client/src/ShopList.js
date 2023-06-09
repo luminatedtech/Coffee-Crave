@@ -10,12 +10,11 @@ function ShopList () {
     .then((r)=> r.json())
     .then((shops)=> setShops(shops))
 }, [])
-
-  console.log(shops)
+console.log(shops)
 
 return (
     <div className="shopList"> {shops.map((shop,i)=>(
-        <Shop key={shop.id} id={shop.id} image_url={shop.image_url} reviews={shop.reviews} address={shop.address} hours={shop.hours} name={shop.name} index={i}/>
+        <Shop key={shop.id} id={shop.id} image_url={shop.image_url} shop={shop} address={shop.address} hours={shop.hours} name={shop.name} reviews={shop.reviews} index={i}/>
     ))}
 
     </div>

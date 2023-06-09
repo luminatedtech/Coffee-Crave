@@ -3,7 +3,7 @@ Rails.application.routes.draw do
     resources :reviews, only: [:show,:index]
   end 
   resources :users,:reviews,:shops,:sessions, only: [:create,:show,:destroy,:update,:index]
-  
+  post '/shops', to: 'shops#create'
   get '/shops/:shop_id/reviews', to: 'reviews#index'
   get '/', to: 'shops#index'
   post '/login', to: 'sessions#create'

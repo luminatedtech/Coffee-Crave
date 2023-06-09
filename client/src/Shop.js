@@ -2,22 +2,12 @@ import React, {useState, useEffect} from "react";
 import ReviewList from "./ReviewList";
 import {Link} from "react-router-dom"
 
-function Shop ({id,address,image_url,index,hours,name}) {
-const [reviews,setReviews] = useState([])
+function Shop ({id,address,image_url,index,hours,name,reviews}) {
+
 const [showReviews,setShowReviews] = useState(true)
-function getReviews (shopId) {
-    fetch(`/shops/${shopId}/reviews`)
-    .then((r)=>r.json())
-    .then((reviews)=>setReviews(reviews))
-}
-useEffect(()=> {
-    getReviews(id)
-    console.log(reviews)
 
-},[id])
+console.log(reviews)
 
-
-const reviewCount = reviews.length
 
     return (
         <>
@@ -34,7 +24,7 @@ const reviewCount = reviews.length
                       className="seeReviewsButton"
                       onClick={()=>setShowReviews(false)}
                     >
-                      {`See Reviews (${reviewCount})`} 
+                      {`See Reviews ($)`} 
                     </button>
                   </>
                 )}
@@ -46,7 +36,7 @@ const reviewCount = reviews.length
               </div>
             </div>
           </div>
-        {!showReviews && <ReviewList getReviews={()=>getReviews(id)} reviews={reviews} setReviews={setReviews}/>}
+        {!showReviews && <ReviewList reviews={reviews} />}
       </>
     )
 }

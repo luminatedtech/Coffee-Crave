@@ -1,24 +1,14 @@
 import React from "react";
 
 import Review from "./Review";
-function ReviewList ({reviews,getReviews,setReviews}) {
+function ReviewList ({reviews}) {
   const reviewCount = reviews.length
-  function handleUpdateReview(updatedReview) {
-    const updatedReviews = reviews.map((review)=> {
-      if (review.id === updatedReview.id) {
-        return updatedReview;
-      } else {
-        return review
-      }
-    })
-    setReviews(updatedReviews)
-  }
-  
+ console.log(reviews)
 return (
     
     <div className="reviewList">
       {reviews.map((review)=> (
-          <Review key={review.id} getReviews={getReviews} username={review.user.username} id={review.id} comment={review.comment} stars={review.stars} title={review.title} onUpdateReview ={handleUpdateReview} />
+          <Review key={review.id} review={review} id={review.id} comment={review.comment} stars={review.stars} title={review.title} />
       ))}
       {!reviewCount && 
         <div className="noReviewContainer">

@@ -1,9 +1,10 @@
 import React, {useState} from "react"
-function EditForm ({id,onUpdateReview}) {
-    
-    const [comment,setComment] = useState("")
-    const [title, setTitle] = useState("")
-    const [stars, setStars] = useState(1)
+import { useNavigate } from "react-router-dom"
+function EditForm ({id,oldComment,oldStars,oldTitle}) {
+    const navigate = useNavigate()
+    const [comment,setComment] = useState([oldComment])
+    const [title, setTitle] = useState([oldTitle])
+    const [stars, setStars] = useState([oldStars])
     const [errors,setErrors] = useState([])
     const [isLoading,setIsLoading] = useState(false)
     function onUpdateReviewClick (e) {
@@ -23,7 +24,7 @@ function EditForm ({id,onUpdateReview}) {
         .then((r)=> {
             setIsLoading(false)
             if (r.ok){
-                r.json().then((updatedReview)=> onUpdateReview(updatedReview))
+                navigate('/')
             } else {
                 r.json().then((err) => setErrors(err.errors))
             }
@@ -63,13 +64,13 @@ function EditForm ({id,onUpdateReview}) {
                         {isLoading ? "Loading..." : "Finish"}
                     </button>
                 </div>
-                <div>
-                    {errors.map((error)=> (
-                        <span> 
-                            {error}
-                        </span>
+                {errors.length > 0 && (
+                    <ul style={{ color: "red" }}>
+                    {errors.map((error) => (
+                     <li key={error}>{error}</li>
                     ))}
-                </div>
+                  </ul>
+                )}
             </form>
         </section>
     )

@@ -22,7 +22,7 @@ const [isLoading, setIsLoading] = useState(false)
 				r.json().then((user)=> setLogin(user))
 			}
 			else {
-				r.json().then((err)=> setErrors(err.errors))
+				r.json().then((err)=> console.log(err.errors))
 			}
 		})
 	}
@@ -47,7 +47,13 @@ const [isLoading, setIsLoading] = useState(false)
 					<button className = "button" type="submit" name="submit" value="Login">
 						{isLoading ? "Loading..." : "Login"}
 					</button>
-						
+					{errors.length > 0 && (
+                    <ul style={{ color: "red" }}>
+                    {errors.map((error) => (
+                     <li key={error}>{error}</li>
+                    ))}
+                  </ul>
+                )}	
 					
 					
 				</form>
