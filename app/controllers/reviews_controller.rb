@@ -1,8 +1,8 @@
 class ReviewsController < ApplicationController
     before_action :authorize
     def create
-        user = User.find_by(id: session[:user_id])
-        review = user.reviews.create(review_params)
+        
+        review = @user.reviews.create(review_params)
             if review.valid? && session[:user_id] = review.user.id
                 render json: review, status: :created
             else
@@ -23,8 +23,10 @@ class ReviewsController < ApplicationController
         review = Review.find_by(id: params[:id])
         user = User.find_by(id: session[:user_id])
         if review && session[:user_id] === review.user.id 
+
             review.destroy
             head :no_content
+            
         else 
             render json: {errors: ["Review belongs to different user"]}, status: :unauthorized
         end 

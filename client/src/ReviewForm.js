@@ -1,9 +1,10 @@
-import React,{ useState } from "react"
+import React,{ useState,useContext } from "react"
 import { useParams,useNavigate } from "react-router-dom"
-
+import { ShopContext } from "./context/ShopContext"
 
 function ReviewForm () {
-    
+
+    const {setShops,shops} = useContext(ShopContext)
     const navigate = useNavigate()
     const [comment,setComment] = useState ("")
     const [stars, setStars] = useState(1)
@@ -28,7 +29,23 @@ function ReviewForm () {
         }).then((r)=> {
             setIsLoading(false)
             if (r.ok) {
-                navigate('/')
+                r.json().then((review)=>{
+                shops.map((shop)=> {
+                    console.log(review.shop.id)
+                    if (shop.id === review.shop.id){
+                    
+                     const updatedReviews = [...shop.reviews,review]
+                      shop.reviews = updatedReviews
+                      setShops(shops)
+                      navigate('/')
+                    }
+                    else 
+                    return shops
+                })
+            })
+                //Iterate through the shops and find the shop that's getting the review 
+                //Find the Reviews key and add that review 
+              
             } else {
                 r.json().then((err)=> setErrors(err.errors))
             }

@@ -1,9 +1,12 @@
-import React, {useState} from "react"
+import React, {useContext, useState} from "react"
+import { useNavigate } from "react-router-dom"
 import EditForm from "./EditForm"
+import { ShopContext } from "./context/ShopContext"
 function Review ({stars,comment,title,id,review}) {
     const [showEdit, setShowEdit] = useState(true)
     const [errors,setErrors] = useState([])
-    
+    const navigate = useNavigate()
+    const {shops,setShops} = useContext(ShopContext)
 
     function onDeleteReview () {
         fetch(`/reviews/${id}`,{
@@ -12,13 +15,26 @@ function Review ({stars,comment,title,id,review}) {
         .then((r)=> {
             
           if (r.ok) {
-            
+            const deletedReview = review 
+            {shops.map((shop)=> {
+              if (shop.id === deletedReview.shop.id){
+                console.log(shop.reviews)
+                const updatedReviews = shop.reviews.filter(review => review.id !== deletedReview.id)
+                console.log(updatedReviews)
+                shop.reviews = updatedReviews
+                setShops(shops)
+                
+              }
+              else {
+                return shops
+              }
+            })}
           }else {
             r.json().then((err)=>setErrors(err.errors))
           }
             
         })
-          
+  
     }
 return (
     <div className="review">
@@ -47,11 +63,13 @@ return (
       <button className ="deleteButton" onClick={onDeleteReview}>
         <img alt="delete" src="delete.png" />
       </button>
-      <div>
-          {errors.map((error)=> (
-              <span> {error} </span>
-            ))}
-      </div>
+      {errors.length > 0 && (
+                <ul style={{ color: "red" }}>
+                {errors.map((error) => (
+                 <li key={error}>{error}</li>
+                ))}
+              </ul>
+            )}
     </div>
 )
 }

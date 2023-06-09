@@ -5,7 +5,9 @@ import NavBar from "./NavBar";
 import ShopForm from "./ShopForm";
 import {Routes, Route, BrowserRouter} from "react-router-dom"
 import ReviewForm from "./ReviewForm";
+import { ShopProvider } from "./context/ShopContext";
 export const LoginContext = createContext(null)
+
 function App() {
   const [user, setUser] = useState(null);
 
@@ -24,16 +26,18 @@ function App() {
   return (
     
     <div className="App">
-      
+    
     <BrowserRouter> 
+    <ShopProvider>
     <NavBar user={user} setUser={setUser}/>
       <Routes>
         <Route path="/ShopForm" element={<ShopForm/>}/>
         <Route path="/" element={<ShopList/>}/>
         <Route path="/newReview/:shopId" element={<ReviewForm user={user}/>}/>
       </Routes>
-      
+      </ShopProvider>
       </BrowserRouter>
+
     </div>
   );
 }
