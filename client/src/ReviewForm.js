@@ -36,6 +36,7 @@ function ReviewForm () {
                     
                      const updatedReviews = [...shop.reviews,review]
                       shop.reviews = updatedReviews
+                    
                       setShops(shops)
                       navigate('/')
                     }

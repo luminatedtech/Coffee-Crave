@@ -1,6 +1,8 @@
-import React, {useState} from "react"
+import React, {useContext, useState} from "react"
 import { useNavigate } from "react-router-dom"
-function EditForm ({id,oldComment,oldStars,oldTitle}) {
+import { ShopContext } from "./context/ShopContext"
+function EditForm ({id,oldComment,oldStars,oldTitle,shopId,setShowEdit}) {
+    const {shops,setShops} = useContext(ShopContext)
     const navigate = useNavigate()
     const [comment,setComment] = useState([oldComment])
     const [title, setTitle] = useState([oldTitle])
@@ -24,7 +26,24 @@ function EditForm ({id,oldComment,oldStars,oldTitle}) {
         .then((r)=> {
             setIsLoading(false)
             if (r.ok){
-                navigate('/')
+                r.json().then((updatedReview)=>{
+                    setShops((prevShops)=> {
+                        const shopIndex = prevShops.findIndex((shop)=> shop.id === shopId)
+                       prevShops[shopIndex].reviews = prevShops[shopIndex].reviews.map((review)=> {
+                            if (review.id === id ) {
+                                return updatedReview
+                            }
+                            else {
+                                return review
+                            }
+            
+                        })
+                        return ([...prevShops])
+                        
+                    })
+                setShowEdit(true)
+                })
+                
             } else {
                 r.json().then((err) => setErrors(err.errors))
             }

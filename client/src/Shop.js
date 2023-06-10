@@ -36,7 +36,7 @@ console.log(reviews)
               </div>
             </div>
           </div>
-        {!showReviews && <ReviewList reviews={reviews} />}
+        {!showReviews && <ReviewList shopId={id} reviews={reviews} />}
       </>
     )
 }

@@ -36,7 +36,7 @@ class ReviewsController < ApplicationController
         user = User.find_by(id: session[:id])
         if session[:user_id] == review.user.id
             review.update(review_params)
-            render json: review, include: :user
+            render json: review
         else 
             render json: {errors: ["Review belongs to someone else"]}, status: :unauthorized
         end

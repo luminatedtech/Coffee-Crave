@@ -1,13 +1,14 @@
 import React, {useContext, useState} from "react"
-import { useNavigate } from "react-router-dom"
+
 import EditForm from "./EditForm"
 import { ShopContext } from "./context/ShopContext"
-function Review ({stars,comment,title,id,review}) {
+function Review ({stars,comment,title,id,review,shopId,username}) {
+
     const [showEdit, setShowEdit] = useState(true)
     const [errors,setErrors] = useState([])
-    const navigate = useNavigate()
+    
     const {shops,setShops} = useContext(ShopContext)
-
+    console.log(username)
     function onDeleteReview () {
         fetch(`/reviews/${id}`,{
             method: "DELETE"
@@ -16,13 +17,14 @@ function Review ({stars,comment,title,id,review}) {
             
           if (r.ok) {
             const deletedReview = review 
+            
             {shops.map((shop)=> {
-              if (shop.id === deletedReview.shop.id){
-                console.log(shop.reviews)
+              if (shop.id === shopId){
+                
                 const updatedReviews = shop.reviews.filter(review => review.id !== deletedReview.id)
-                console.log(updatedReviews)
+                
                 shop.reviews = updatedReviews
-                setShops(shops)
+                setShops([...shops])
                 
               }
               else {
@@ -39,7 +41,7 @@ function Review ({stars,comment,title,id,review}) {
 return (
     <div className="review">
       <div className="reviewContainer">
-        <p className="commenter"><span></span> <em>commented</em> {comment}</p>
+        <p className="commenter"><span>{username}</span> <em>commented</em> {comment}</p>
         <h2> {title} </h2>
         <p> This gets {stars} stars! </p>
       </div>
@@ -51,7 +53,7 @@ return (
         </>
       ) : (
         <>
-          <EditForm oldStars={stars} oldComment={comment} oldTitle={title} id={id}/>
+          <EditForm setShowEdit={setShowEdit} shopId={shopId} oldStars={stars} oldComment={comment} oldTitle={title} id={id}/>
           <p>
             Done?
             <button onClick={()=>setShowEdit(true)}>
