@@ -34,12 +34,12 @@ class ReviewsController < ApplicationController
     def update 
         review = Review.find_by(id: params[:id])
         user = User.find_by(id: session[:id])
-        if session[:user_id] == review.user.id
+        if session[:user_id] == review.user.id and review.valid?
             review.update(review_params)
             render json: review
-        else 
-            render json: {errors: ["Review belongs to someone else"]}, status: :unauthorized
-        end
+        elsif !review.valid?
+            render json: {errors: review.errors.full_messages }, status: :unauthorized
+         end
     end 
 private
     def review_params

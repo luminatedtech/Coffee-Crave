@@ -6,7 +6,7 @@ function Shop ({id,address,image_url,index,hours,name,reviews}) {
 
 const [showReviews,setShowReviews] = useState(true)
 
-console.log(reviews)
+const numberOfReviews = reviews.length
 
 
     return (
@@ -24,7 +24,7 @@ console.log(reviews)
                       className="seeReviewsButton"
                       onClick={()=>setShowReviews(false)}
                     >
-                      {`See Reviews ($)`} 
+                      {`See Reviews (${numberOfReviews})`} 
                     </button>
                   </>
                 )}
