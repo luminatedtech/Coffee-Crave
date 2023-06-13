@@ -44,7 +44,7 @@ const [isLoading, setIsLoading] = useState(false)
 						onChange={(e)=> setPassword(e.target.value)}
 					/>
 					<br/>
-					<button className = "button" type="submit" name="submit" value="Login">
+					<button className = "loginButton" type="submit" name="submit" value="Login">
 						{isLoading ? "Loading..." : "Login"}
 					</button>
 					{errors.length > 0 && (

@@ -8,11 +8,13 @@ const [showReviews,setShowReviews] = useState(true)
 
 const numberOfReviews = reviews.length
 
+console.log( id, image_url)
+
 
     return (
         <>
           <div className="shop">
-            <img alt="shopLogo" src={image_url}/> 
+            <img alt="shopLogo" src={id === 6 ? "/beanhut.jpg" : image_url}/> 
             <div className="shopInfo">
               <h1>{`${index + 1}. ${name}`}</h1>
               <p><b>Address:</b> {address}</p>
