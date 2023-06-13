@@ -22,7 +22,7 @@ const [isLoading, setIsLoading] = useState(false)
 				r.json().then((user)=> setLogin(user))
 			}
 			else {
-				r.json().then((err)=> console.log(err.errors))
+				r.json().then((err)=> setErrors(err.errors))
 			}
 		})
 	}
